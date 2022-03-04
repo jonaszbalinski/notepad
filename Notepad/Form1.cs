@@ -13,7 +13,7 @@ namespace Notepad
 {
     public partial class mainWindow : Form
     {
-        private Boolean isFileSaved = true;
+        private bool isFileSaved = false;
         private String pathToFile = "";
 
         public mainWindow()
@@ -58,6 +58,16 @@ namespace Notepad
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (isFileSaved == false)
+            {
+                DialogResult saveDialog = MessageBox.Show("Do you want to save?",
+                    "Save", MessageBoxButtons.YesNo);
+                if (saveDialog == DialogResult.Yes)
+                {
+                    saveToolStripMenuItem.PerformClick();
+                }
+            }
+
             pathToFile = "";
             notepadTextBox.Text = "";
             mainWindow.ActiveForm.Text = "New file";
