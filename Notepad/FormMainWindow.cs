@@ -37,6 +37,29 @@ namespace Notepad
             isFileSaved = isSaved;
         }
 
+        private void UpdateTheme(string theme)
+        {
+            switch (theme)
+            {
+                case "white":
+                    MainWindow.ActiveForm.BackColor = Color.WhiteSmoke;
+                    MainWindow.ActiveForm.ForeColor = Color.Black;
+                    menuStrip1.BackColor = Color.FloralWhite;
+                    menuStrip1.ForeColor = Color.Black;
+                    NotepadTextBox.BackColor = Color.AntiqueWhite;
+                    NotepadTextBox.ForeColor = Color.Black;
+                    break;
+
+                case "dark":
+                    MainWindow.ActiveForm.BackColor = Color.DarkCyan;
+                    MainWindow.ActiveForm.ForeColor = Color.White;
+                    menuStrip1.BackColor = Color.DarkGray;
+                    menuStrip1.ForeColor = Color.WhiteSmoke;
+                    NotepadTextBox.BackColor = Color.DarkSlateGray;
+                    NotepadTextBox.ForeColor = Color.White;
+                    break;
+            }
+        }
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (isFileSaved == false)
@@ -119,6 +142,13 @@ namespace Notepad
         private void NotepadTextBox_TextChanged(object sender, EventArgs e)
         {
             UpdateIsFileSaved(false);
+        }
+
+        private void ThemeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormThemes ft = new FormThemes();
+            ft.ShowDialog();
+            UpdateTheme(ft.ChoosenTheme);
         }
     }
 }

@@ -35,6 +35,7 @@
             this.SaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NotepadTextBox = new System.Windows.Forms.RichTextBox();
+            this.ThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,10 +43,11 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.FileToolStripMenuItem});
+            this.FileToolStripMenuItem,
+            this.ThemeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -91,12 +93,19 @@
             // NotepadTextBox
             // 
             this.NotepadTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.NotepadTextBox.Location = new System.Drawing.Point(0, 28);
+            this.NotepadTextBox.Location = new System.Drawing.Point(0, 30);
             this.NotepadTextBox.Name = "NotepadTextBox";
-            this.NotepadTextBox.Size = new System.Drawing.Size(800, 422);
+            this.NotepadTextBox.Size = new System.Drawing.Size(800, 420);
             this.NotepadTextBox.TabIndex = 1;
             this.NotepadTextBox.Text = "";
             this.NotepadTextBox.TextChanged += new System.EventHandler(this.NotepadTextBox_TextChanged);
+            // 
+            // ThemeToolStripMenuItem
+            // 
+            this.ThemeToolStripMenuItem.Name = "ThemeToolStripMenuItem";
+            this.ThemeToolStripMenuItem.Size = new System.Drawing.Size(68, 24);
+            this.ThemeToolStripMenuItem.Text = "Theme";
+            this.ThemeToolStripMenuItem.Click += new System.EventHandler(this.ThemeToolStripMenuItem_Click);
             // 
             // MainWindow
             // 
@@ -124,6 +133,7 @@
         private System.Windows.Forms.ToolStripMenuItem SaveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SaveAsToolStripMenuItem;
         private System.Windows.Forms.RichTextBox NotepadTextBox;
+        private System.Windows.Forms.ToolStripMenuItem ThemeToolStripMenuItem;
     }
 }
 
