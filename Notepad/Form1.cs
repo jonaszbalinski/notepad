@@ -11,52 +11,52 @@ using System.Windows.Forms;
 
 namespace Notepad
 {
-    public partial class mainWindow : Form
+    public partial class MainWindow : Form
     {
         private bool isFileSaved = false;
         private String pathToFile = "";
 
-        public mainWindow()
+        public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "TXT files|*.txt|BAT files|*.bat|All|*.*";
             if(ofd.ShowDialog() == DialogResult.OK)
             {
-                notepadTextBox.Text = File.ReadAllText(ofd.FileName);
-                mainWindow.ActiveForm.Text = ofd.FileName;
+                NotepadTextBox.Text = File.ReadAllText(ofd.FileName);
+                MainWindow.ActiveForm.Text = ofd.FileName;
                 pathToFile = ofd.FileName;
             }
         }
 
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if(pathToFile != "")
             {
-                File.WriteAllText(pathToFile, notepadTextBox.Text);
+                File.WriteAllText(pathToFile, NotepadTextBox.Text);
             }
             else
             {
-                saveAsToolStripMenuItem.PerformClick();
+                SaveAsToolStripMenuItem.PerformClick();
             }
         }
 
-        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "TXT files|*.txt|BAT files|*.bat|All|*.*";
             if(sfd.ShowDialog() == DialogResult.OK)
             {
-                File.WriteAllText(sfd.FileName, notepadTextBox.Text);
-                mainWindow.ActiveForm.Text = sfd.FileName;
+                File.WriteAllText(sfd.FileName, NotepadTextBox.Text);
+                MainWindow.ActiveForm.Text = sfd.FileName;
             }
         }
 
-        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        private void NewToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (isFileSaved == false)
             {
@@ -64,13 +64,26 @@ namespace Notepad
                     "Save", MessageBoxButtons.YesNo);
                 if (saveDialog == DialogResult.Yes)
                 {
-                    saveToolStripMenuItem.PerformClick();
+                    SaveToolStripMenuItem.PerformClick();
                 }
             }
 
             pathToFile = "";
-            notepadTextBox.Text = "";
-            mainWindow.ActiveForm.Text = "New file";
+            NotepadTextBox.Text = "";
+            MainWindow.ActiveForm.Text = "New file";
+        }
+
+        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (isFileSaved == false)
+            {
+                DialogResult saveDialog = MessageBox.Show("Do you want to save?",
+                    "Save", MessageBoxButtons.YesNo);
+                if (saveDialog == DialogResult.Yes)
+                {
+                    SaveToolStripMenuItem.PerformClick();
+                }
+            }
         }
     }
 }
