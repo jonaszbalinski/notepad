@@ -96,6 +96,7 @@
             this.NotepadTextBox.Size = new System.Drawing.Size(800, 422);
             this.NotepadTextBox.TabIndex = 1;
             this.NotepadTextBox.Text = "";
+            this.NotepadTextBox.TextChanged += new System.EventHandler(this.NotepadTextBox_TextChanged);
             // 
             // MainWindow
             // 
